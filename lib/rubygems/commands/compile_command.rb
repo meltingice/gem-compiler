@@ -8,6 +8,10 @@ class Gem::Commands::CompileCommand < Gem::Command
     add_option "--prune", "Clean non-existing files during re-packaging" do |value, options|
       options[:prune] = true
     end
+
+    add_option "--no-source", "Remove the native source files during re-packaging" do |value, options|
+      options[:no_source] = true
+    end
   end
 
   def arguments

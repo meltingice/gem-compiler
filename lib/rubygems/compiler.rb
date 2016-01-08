@@ -43,6 +43,11 @@ class Gem::Compiler
       gemspec.files.reject! { |f| !File.exist?("#{target_dir}/#{f}") }
     end
 
+    # Remove native source code from gem
+    if @options[:no_source]
+      gemspec.files.reject! { |f| f.start_with?("ext/") }
+    end
+
     # add discovered artifacts
     artifacts.each do |path|
       # path needs to be relative to target_dir
